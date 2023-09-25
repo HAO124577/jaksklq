@@ -1,0 +1,163 @@
+<html>
+<head>
+    <style>
+        /* Стиль фона и цвета устанавливаются автоматически на такой, как стоит у пользователе в телеграме */
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        /* Стиль кнопок */
+        button {
+            width: 200px;
+            height: 50px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        /* Стиль формы */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* Стиль полей ввода */
+        input {
+            width: 300px;
+            height: 30px;
+            font-size: 18px;
+            margin: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        /* Стиль кнопки отправки */
+        input[type=submit] {
+            width: 100px;
+            height: 40px;
+            font-size: 16px;
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Страница с надписью ОНЛАЙН МАГАЗИН и кнопкой КАТАЛОГ -->
+    <div id="page1">
+        <h1>ОНЛАЙН МАГАЗИН</h1>
+        <button id="catalog">КАТАЛОГ</button>
+    </div>
+    <!-- Страница с каталогом ботов -->
+    <div id="page2" style="display: none;">
+        <h1>КАТАЛОГ</h1>
+        <button id="standard">Standard bot</button>
+        <button id="standard-plus">Standard + bot</button>
+        <button id="professional">Professional bot</button>
+        <button id="subscribe">Subscribe</button>
+    </div>
+    <!-- Страница с информацией о Standard bot и формой для заказа -->
+    <div id="page3" style="display: none;">
+        <h1>Standard bot</h1>
+        <p>Бот standard включает в себя следующее: Подключение множества кнопок, добавление фотографий, отклик на выбранные команды, подключение к базовым сайтам как курс валют, население мира и так далее, простые математические операции и с бесплатным занесением на сервера. Для заказа бота нажмите на кнопку "ФОРМА" , заполните свои данные и с вами свяжутся в течении 3 часов.</p>
+        <button id="form1">ФОРМА</button>
+        <form id="form1-content" style="display: none;">
+            <label for="teg1">Telegram teg:</label>
+            <input type="text" id="teg1" name="teg1" required>
+            <label for="email1">Email:</label>
+            <input type="email" id="email1" name="email1" required>
+            <input type="submit" value="Отправить">
+        </form>
+    </div>
+    <!-- Страница с информацией о Standard + bot и формой для заказа -->
+    <div id="page4" style="display: none;">
+        <h1>Standard + bot</h1>
+        <p>Standard + bot включает в себя полную работу с библиотеками бота, более сложные подключения, статистика, база данных пользователей и многое другое, включая все пункты в standard подписки и с занесением на более мощный сервер. Для согласования и установления цены заполните форму ниже.</p>
+        <button id="form2">ФОРМА</button>
+        <form id="form2-content" style="display: none;">
+            <label for="teg2">Telegram teg:</label>
+            <input type="text" id="teg2" name="teg2" required>
+            <label for="email2">Email:</label>
+            <input type="email" id="email2" name="email2" required>
+            <input type="submit" value="Отправить">
+        </form>
+    </div>
+    <!-- Страница с информацией о Professional bot и формой для заказа -->
+    <div id="page5" style="display: none;">
+        <h1>Professional bot</h1>
+        <p>Профессиональный бот обработает любой ваш запрос (в рамках возможного), цена очень варьируется, но в среднем это 15000₽. Для оформления заказа заполните форму ниже.</p>
+        <button id="form3">ФОРМА</button>
+<form id="form3-content" style="display: none;">
+            <label for="teg3">Telegram teg:</label>
+            <input type="text" id="teg3" name="teg3" required>
+            <label for="email3">Email:</label>
+            <input type="email" id="email3" name="email3" required>
+            <input type="submit" value="Отправить">
+        </form>
+    </div>
+    <!-- Страница с подпиской на новости -->
+    <div id="page6" style="display: none;">
+        <h1>Subscribe</h1>
+        <p>Подпишитесь на нашу рассылку и получайте самые свежие новости о наших ботах и акциях.</p>
+        <form id="form4">
+            <label for="email4">Email:</label>
+            <input type="email" id="email4" name="email4" required>
+            <input type="submit" value="Подписаться">
+        </form>
+    </div>
+    <!-- Страница с подтверждением заказа -->
+    <div id="page7" style="display: none;">
+        <h1>Ваш заказ принят</h1>
+        <p>Ждите сообщения от нашего менеджера.</p>
+    </div>
+    <!-- Скрипт для переключения страниц и отправки форм -->
+    <script>
+        // Получаем элементы страниц и кнопок
+        var page1 = document.getElementById("page1");
+        var page2 = document.getElementById("page2");
+        var page3 = document.getElementById("page3");
+        var page4 = document.getElementById("page4");
+        var page5 = document.getElementById("page5");
+        var page6 = document.getElementById("page6");
+        var page7 = document.getElementById("page7");
+        var catalog = document.getElementById("catalog");
+        var standard = document.getElementById("standard");
+        var standardPlus = document.getElementById("standard-plus");
+        var professional = document.getElementById("professional");
+        var subscribe = document.getElementById("subscribe");
+        var form1 = document.getElementById("form1");
+        var form2 = document.getElementById("form2");
+        var form3 = document.getElementById("form3");
+        var form1Content = document.getElementById("form1-content");
+        var form2Content = document.getElementById("form2-content");
+        var form3Content = document.getElementById("form3-content");
+        var form4 = document.getElementById("form4");
+
+        // Функция для скрытия всех страниц
+        function hideAllPages() {
+            page1.style.display = "none";
+            page2.style.display = "none";
+            page3.style.display = "none";
+            page4.style.display = "none";
+            page5.style.display = "none";
+            page6.style.display = "none";
+            page7.style.display = "none";
+        }
+
+        // Функция для скрытия всех форм
+        function hideAllForms() {
+            form1Content.style.display = "none";
+            form2Content.style.display = "none";
+            form3Content.style.display = "none";
+        }
+
+        // Функция для отправки формы и перехода на страницу подтверждения
+        function sendForm(form) {
+            // Получаем данные из формы
+            var teg = form.elements["teg"].value;
+            var email = form.elements["email"].value;
+            // Отправляем данные владельцу бота
+            // Здесь нужно добавить код для отправки данных по API телеграма
+            //
+    </script>
+</body>
+<html>
